@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence           http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <persistence-unit name="cr.ac.una_Pruebas_Java_II_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>cr.ac.una.pruebas_java_ii.model.Mark</class>
+    <class>cr.ac.una.pruebas_java_ii.model.Register</class>
+    <class>cr.ac.una.pruebas_java_ii.model.Employe</class>
+    <class>cr.ac.una.pruebas_java_ii.model.Employee</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521/XEPDB1"/>
+      <property name="javax.persistence.jdbc.user" value="relojUNA"/>
+      <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+      <property name="javax.persistence.jdbc.password" value="una"/>
+    </properties>
+  </persistence-unit>
+</persistence>
