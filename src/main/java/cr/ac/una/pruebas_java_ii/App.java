@@ -1,6 +1,5 @@
 package cr.ac.una.pruebas_java_ii;
 
-import cr.ac.una.pruebas_java_ii.model.JasperPdf;
 import cr.ac.una.pruebas_java_ii.util.FlowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

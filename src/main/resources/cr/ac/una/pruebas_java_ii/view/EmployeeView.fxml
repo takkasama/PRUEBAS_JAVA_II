@@ -1,34 +1,327 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+
+<?import javafx.geometry.Insets?>
+
 <?import javafx.scene.control.Label?>
+
 <?import javafx.scene.control.ListView?>
+
+<?import javafx.scene.control.Separator?>
+
 <?import javafx.scene.layout.AnchorPane?>
+
 <?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.layout.Region?>
+
 <?import javafx.scene.layout.VBox?>
 
+<AnchorPane id="AnchorPane"
+         prefHeight="650.0"
+         prefWidth="1050.0"
+         style="-fx-background-color: #f4f4f4;"
+         xmlns="http://javafx.com/javafx/23.0.1"
+         xmlns:fx="http://javafx.com/fxml/1"          fx:controller="cr.ac.una.pruebas_java_ii.controller.MarkController">
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="cr.ac.una.pruebas_java_ii.controller.EmployeeController">
-   <children>
-      <HBox alignment="CENTER" layoutX="188.0" layoutY="150.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label text="Employe Register" />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                     <children>
-                        <MFXTextField floatingText="Name" prefWidth="150.0" />
-                        <MFXTextField floatingText="Last Name" prefWidth="150.0" />
-                     </children>
-                  </HBox>
-               </children>
+```
+<children>
+
+    <VBox spacing="20.0"
+          AnchorPane.topAnchor="20.0"
+          AnchorPane.bottomAnchor="20.0"
+          AnchorPane.leftAnchor="25.0"
+          AnchorPane.rightAnchor="25.0">
+
+        <padding>
+            <Insets top="10.0"
+                    right="10.0"
+                    bottom="10.0"
+                    left="10.0"/>
+        </padding>
+
+        <!-- ====================================================== -->
+        <!-- HEADER -->
+        <!-- ====================================================== -->
+
+        <VBox spacing="5.0">
+
+            <Label text="Employee Management"
+                   style="
+                       -fx-font-size: 26px;
+                       -fx-font-weight: bold;
+                       -fx-text-fill: #242424;
+                   "/>
+
+            <Label text="Registro y consulta de empleados"
+                   style="
+                       -fx-font-size: 13px;
+                       -fx-text-fill: #777777;
+                   "/>
+
+        </VBox>
+
+        <Separator/>
+
+        <!-- ====================================================== -->
+        <!-- MAIN CONTENT -->
+        <!-- ====================================================== -->
+
+        <HBox spacing="20.0"
+              VBox.vgrow="ALWAYS">
+
+            <!-- ================================================== -->
+            <!-- EMPLOYEE REGISTER -->
+            <!-- ================================================== -->
+
+            <VBox spacing="18.0"
+                  prefWidth="330.0"
+                  style="
+                      -fx-background-color: white;
+                      -fx-background-radius: 12px;
+                      -fx-border-radius: 12px;
+                      -fx-border-color: #dddddd;
+                      -fx-border-width: 1px;
+                  ">
+
+                <padding>
+                    <Insets top="22.0"
+                            right="22.0"
+                            bottom="22.0"
+                            left="22.0"/>
+                </padding>
+
+                <Label text="Employee Register"
+                       style="
+                           -fx-font-size: 20px;
+                           -fx-font-weight: bold;
+                           -fx-text-fill: #333333;
+                       "/>
+
+                <Label text="Ingrese los datos del empleado"
+                       style="
+                           -fx-font-size: 12px;
+                           -fx-text-fill: #888888;
+                       "/>
+
+                <Separator/>
+
+                <MFXTextField fx:id="txtName"
+                              floatingText="Name"
+                              promptText="Employee name"
+                              prefHeight="45.0"
+                              maxWidth="Infinity"/>
+
+                <MFXTextField fx:id="txtLastName"
+                              floatingText="Last Name"
+                              promptText="Employee last name"
+                              prefHeight="45.0"
+                              maxWidth="Infinity"/>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <HBox spacing="10.0">
+
+                    <MFXButton fx:id="btnSave"
+                               text="Save"
+                               onAction="#onActionSave"
+                               prefHeight="40.0"
+                               maxWidth="Infinity"
+                               HBox.hgrow="ALWAYS"
+                               style="
+                                   -fx-background-color: #2e7d32;
+                                   -fx-text-fill: white;
+                                   -fx-background-radius: 7px;
+                               "/>
+
+                    <MFXButton fx:id="btnClear"
+                               text="Clear"
+                               onAction="#onActionClear"
+                               prefHeight="40.0"
+                               maxWidth="Infinity"
+                               HBox.hgrow="ALWAYS"
+                               style="
+                                   -fx-background-color: #e0e0e0;
+                                   -fx-text-fill: #333333;
+                                   -fx-background-radius: 7px;
+                               "/>
+
+                </HBox>
+
+                <MFXButton fx:id="btnDelete"
+                           text="Delete Selected"
+                           onAction="#onActionDelete"
+                           prefHeight="40.0"
+                           maxWidth="Infinity"
+                           style="
+                               -fx-background-color: #c62828;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 7px;
+                           "/>
+
+                <Separator/>
+
+                <Label fx:id="lblStatus"
+                       text="Ready"
+                       wrapText="true"
+                       style="
+                           -fx-font-size: 12px;
+                           -fx-text-fill: #777777;
+                       "/>
+
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <ListView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-               </children>
+
+            <!-- ================================================== -->
+            <!-- EMPLOYEE LIST -->
+            <!-- ================================================== -->
+
+            <VBox spacing="15.0"
+                  HBox.hgrow="ALWAYS"
+                  style="
+                      -fx-background-color: white;
+                      -fx-background-radius: 12px;
+                      -fx-border-radius: 12px;
+                      -fx-border-color: #dddddd;
+                      -fx-border-width: 1px;
+                  ">
+
+                <padding>
+                    <Insets top="22.0"
+                            right="22.0"
+                            bottom="22.0"
+                            left="22.0"/>
+                </padding>
+
+                <!-- LIST HEADER -->
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="10.0">
+
+                    <VBox spacing="3.0">
+
+                        <Label text="Employees"
+                               style="
+                                   -fx-font-size: 20px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #333333;
+                               "/>
+
+                        <Label text="Seleccione un empleado para gestionar sus datos"
+                               style="
+                                   -fx-font-size: 12px;
+                                   -fx-text-fill: #888888;
+                               "/>
+
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <MFXButton fx:id="btnRefresh"
+                               text="Refresh"
+                               onAction="#onActionRefresh"
+                               prefWidth="100.0"
+                               prefHeight="38.0"/>
+
+                </HBox>
+
+                <Separator/>
+
+                <!-- EMPLOYEE LIST -->
+
+                <ListView fx:id="lvEmployees"
+                          VBox.vgrow="ALWAYS"
+                          prefHeight="380.0"/>
+
+                <Separator/>
+
+                <!-- EMPLOYEE ACTIONS -->
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="10.0">
+
+                    <MFXButton fx:id="btnViewMarks"
+                               text="View Marks"
+                               onAction="#onActionViewMarks"
+                               prefHeight="42.0"
+                               prefWidth="150.0"
+                               style="
+                                   -fx-background-color: #1565c0;
+                                   -fx-text-fill: white;
+                                   -fx-background-radius: 7px;
+                               "/>
+
+                    <MFXButton fx:id="btnEditEmployee"
+                               text="Edit"
+                               onAction="#onActionEditEmployee"
+                               prefHeight="42.0"
+                               prefWidth="110.0"
+                               style="
+                                   -fx-background-color: #455a64;
+                                   -fx-text-fill: white;
+                                   -fx-background-radius: 7px;
+                               "/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label text="Total Employees: "
+                           style="
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #555555;
+                           "/>
+
+                    <Label fx:id="lblTotalEmployees"
+                           text="0"
+                           style="
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #2e7d32;
+                           "/>
+
+                </HBox>
+
+                <!-- SELECTED EMPLOYEE INFORMATION -->
+
+                <VBox spacing="5.0"
+                      style="
+                          -fx-background-color: #f7f7f7;
+                          -fx-background-radius: 8px;
+                          -fx-border-radius: 8px;
+                          -fx-border-color: #eeeeee;
+                      ">
+
+                    <padding>
+                        <Insets top="10.0"
+                                right="12.0"
+                                bottom="10.0"
+                                left="12.0"/>
+                    </padding>
+
+                    <Label text="Selected Employee"
+                           style="
+                               -fx-font-size: 12px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #666666;
+                           "/>
+
+                    <Label fx:id="lblSelectedEmployee"
+                           text="No employee selected"
+                           wrapText="true"
+                           style="
+                               -fx-font-size: 14px;
+                               -fx-text-fill: #333333;
+                           "/>
+
+                </VBox>
+
             </VBox>
-         </children>
-      </HBox>
-   </children>
+
+        </HBox>
+
+    </VBox>
+
+</children>
+
+
 </AnchorPane>

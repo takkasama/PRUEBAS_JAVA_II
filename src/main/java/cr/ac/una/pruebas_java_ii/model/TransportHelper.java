@@ -24,7 +24,7 @@ public class TransportHelper {
 
 
     // trasporte de EmployeeDTO del WS a EmployeeDTO del cliente
-    public static EmployeeDTO transportEmployeeDTO(cr.ac.una.t_marks_ws.webservice.EmployeeDTO dto) {
+    public static EmployeeDTO transportEmployeeDTO(cr.ac.una.t_marks.webservice.EmployeeDTO dto) {
         EmployeeDTO employe = new EmployeeDTO();
         if (dto == null) 
             return employe;  
@@ -50,8 +50,8 @@ public class TransportHelper {
         return employe;
     }
 
-    public static cr.ac.una.t_marks_ws.webservice.EmployeeDTO transportEmployeeDTOWS(EmployeeDTO dto) {
-        cr.ac.una.t_marks_ws.webservice.EmployeeDTO employe = new cr.ac.una.t_marks_ws.webservice.EmployeeDTO();
+    public static cr.ac.una.t_marks.webservice.EmployeeDTO transportEmployeeDTOWS(EmployeeDTO dto) {
+        cr.ac.una.t_marks.webservice.EmployeeDTO employe = new cr.ac.una.t_marks.webservice.EmployeeDTO();
         if (dto == null) 
             return employe;  
 
@@ -80,7 +80,7 @@ public class TransportHelper {
     
 
     // trasporte de RegisterDTO del WS a RegisterDTO del cliente
-    public static RegisterDTO transportRegisterDTO(cr.ac.una.t_marks_ws.webservice.RegisterDTO dto) {
+    public static RegisterDTO transportRegisterDTO(cr.ac.una.t_marks.webservice.RegisterDTO dto) {
         RegisterDTO register = new RegisterDTO();
         if (dto == null)
             return register;
@@ -95,8 +95,8 @@ public class TransportHelper {
     }
 
 
-    public static cr.ac.una.t_marks_ws.webservice.RegisterDTO transportRegisterDTOWS(RegisterDTO dto) {
-        cr.ac.una.t_marks_ws.webservice.RegisterDTO register = new cr.ac.una.t_marks_ws.webservice.RegisterDTO();
+    public static cr.ac.una.t_marks.webservice.RegisterDTO transportRegisterDTOWS(RegisterDTO dto) {
+        cr.ac.una.t_marks.webservice.RegisterDTO register = new cr.ac.una.t_marks.webservice.RegisterDTO();
         if (dto == null)
             return register;
         
@@ -114,7 +114,7 @@ public class TransportHelper {
 
 
     //trasporte de MarkDTO del WS a MarkDTO del cliente
-    public static MarkDTO transportMarkDTO(cr.ac.una.t_marks_ws.webservice.MarkDTO dto) {
+    public static MarkDTO transportMarkDTO(cr.ac.una.t_marks.webservice.MarkDTO dto) {
         MarkDTO mark = new MarkDTO();
         if (dto == null)
             return mark;
@@ -132,8 +132,8 @@ public class TransportHelper {
         return mark;
     }
     
-    public static cr.ac.una.t_marks_ws.webservice.MarkDTO transportMarkDTOWS(MarkDTO dto){
-        cr.ac.una.t_marks_ws.webservice.MarkDTO mark = new cr.ac.una.t_marks_ws.webservice.MarkDTO();
+    public static cr.ac.una.t_marks.webservice.MarkDTO transportMarkDTOWS(MarkDTO dto){
+        cr.ac.una.t_marks.webservice.MarkDTO mark = new cr.ac.una.t_marks.webservice.MarkDTO();
         
         if(dto == null)
             return mark;

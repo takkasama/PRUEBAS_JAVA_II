@@ -23,9 +23,11 @@ import javafx.scene.layout.AnchorPane;
 public class MainController extends Controller implements Initializable{
 
     @FXML
-    private MFXButton btnMark;
+    private MFXButton btnEmployees;
     @FXML
-    private MFXButton btnEmployee;
+    private MFXButton btnMarks;
+    @FXML
+    private MFXButton btnCreateMark;
 
     /**
      * Initializes the controller class.
@@ -39,14 +41,18 @@ public class MainController extends Controller implements Initializable{
     public void initialize() {
     }
 
-
     @FXML
-    private void onActionBtnMark(ActionEvent event) {
-        FlowController.getInstance().goViewInStage("MarkCreatorView", getStage());
+    private void onActionEmployees(ActionEvent event) {
     }
 
     @FXML
-    private void onActionBtnEmployee(ActionEvent event) {
+    private void onActionMarks(ActionEvent event) {
+        FlowController.getInstance().goViewInStage("markView", getStage());
+    }
+
+    @FXML
+    private void onActionBtnCreateMark(ActionEvent event) {
+        FlowController.getInstance().goViewInStage("MarkCreatorView", getStage());
     }
     
     

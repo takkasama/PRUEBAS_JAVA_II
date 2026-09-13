@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>cr.ac.una</groupId>
     <artifactId>Pruebas_Java_II</artifactId>
@@ -10,7 +10,7 @@
         <maven.compiler.target>25</maven.compiler.target>
     </properties>
     <dependencies>
-                <dependency>
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>25.0.2</version>
@@ -32,13 +32,13 @@
             <version>2.1.0</version>
         </dependency>
         
-       <dependency>
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
             <version>25.0.2</version>
-       </dependency>
+        </dependency>
        
-              <!--EMAIL-->
+        <!--EMAIL-->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>jakarta.mail</artifactId>
@@ -51,8 +51,8 @@
             <version>2.0.1</version>
         </dependency>
         
-              <!-- PERSISTENCE -->
-      <dependency>
+        <!-- PERSISTENCE -->
+        <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
             <version>4.0.2</version>
@@ -64,21 +64,21 @@
             <version>21.21.0.0</version>
         </dependency>
        
-            <!--EXEL-->
+        <!--EXEL-->
         <dependency> 
-          <groupId>org.apache.poi</groupId>
-          <artifactId>poi</artifactId> 
-          <version>5.5.0</version> 
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId> 
+            <version>5.5.0</version> 
         </dependency> 
         <dependency> 
-          <groupId>org.apache.poi</groupId> 
-          <artifactId>poi-ooxml</artifactId> 
-          <version>5.5.0</version> 
+            <groupId>org.apache.poi</groupId> 
+            <artifactId>poi-ooxml</artifactId> 
+            <version>5.5.0</version> 
         </dependency>
         <dependency>
-          <groupId>org.jxls</groupId>
-          <artifactId>jxls-jexcel</artifactId>
-          <version>1.0.9</version>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls-jexcel</artifactId>
+            <version>1.0.9</version>
         </dependency>
         <dependency>
             <groupId>org.dhatim</groupId>
@@ -90,9 +90,9 @@
             <artifactId>fastexcel</artifactId>
             <version>0.19.0</version>
         </dependency>
-            <!-- JASPER REPORTS -->
+        <!-- JASPER REPORTS -->
             
-            <!-- Source: https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+        <!-- Source: https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
@@ -100,16 +100,16 @@
             <scope>compile</scope>
         </dependency>
         
-                <dependency>
+        <dependency>
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>jaxws-rt</artifactId>
             <version>4.0.3</version>
         </dependency>
-<!--        <dependency>
-        <groupId>org.glassfish.metro</groupId>
-        <artifactId>webservices-rt</artifactId>
-        <version>4.0.6</version>
-    </dependency>-->
+        <!--        <dependency>
+            <groupId>org.glassfish.metro</groupId>
+            <artifactId>webservices-rt</artifactId>
+            <version>4.0.6</version>
+        </dependency>-->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.core</artifactId>
@@ -146,7 +146,7 @@
             <version>2.2.3</version>
         </dependency>
     </dependencies>
- <build>
+    <build>
         <resources>
             <resource>
                 <targetPath>META-INF</targetPath>
@@ -206,11 +206,11 @@
                         <id>ide-profile</id>
                         <configuration>
                             <options>
-				<option>${profiler.jvmargs.arg1}</option>
-				<option>${profiler.jvmargs.arg2}</option>
-				<option>${profiler.jvmargs.arg3}</option>
-				<option>${profiler.jvmargs.arg4}</option>
-				<option>${profiler.jvmargs.arg5}</option>
+                                <option>${profiler.jvmargs.arg1}</option>
+                                <option>${profiler.jvmargs.arg2}</option>
+                                <option>${profiler.jvmargs.arg3}</option>
+                                <option>${profiler.jvmargs.arg4}</option>
+                                <option>${profiler.jvmargs.arg5}</option>
                             </options>
                         </configuration>
                     </execution>
@@ -226,66 +226,25 @@
                             <goal>wsimport</goal>
                         </goals>
                         <configuration>
-                           <wsdlUrls>
-                                <wsdlUrl>http://localhost:8080/t_marks_ws/EmployeeWS?WSDL</wsdlUrl>
+                            <wsdlUrls>
+                                <wsdlUrl>http://localhost:8080/t_marks_ws/TMarksWS?WSDL</wsdlUrl>
                             </wsdlUrls>
-                            <packageName></packageName>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://localhost:8080/t_marks_ws/EmployeeWS?WSDL</wsdlLocation>
                             
-                            <staleFile>${project.build.directory}/jaxws/stale/EmployeWS.stale</staleFile>
+                            <wsdlLocation>http://localhost:8080/t_marks_ws/TMarksWS?WSDL</wsdlLocation>
+                            <packageName>cr.ac.una.t_marks.webservice</packageName>
+                            <staleFile>${project.build.directory}/jaxws/TMarksWS.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-EmployeWS</id>
-                        <phase>generate-sources</phase>
-                    </execution>
-                    
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                           <wsdlUrls>
-                                <wsdlUrl>http://localhost:8080/t_marks_ws/RegisterWS?WSDL</wsdlUrl>
-                            </wsdlUrls>
-                            <packageName></packageName>
-                            <vmArgs>
-                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-                            </vmArgs>
-                            
-                            <wsdlLocation>http://localhost:8080/t_marks_ws/RegisterWS?WSDL</wsdlLocation>
+                        
+                        <id>wsimport-generate-TMarskWS</id>
                        
-                            <staleFile>${project.build.directory}/jaxws/stale/RegisterWS.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-RegisterWS</id>
                         <phase>generate-sources</phase>
                     </execution>
-
-                                        
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                           <wsdlUrls>
-                                <wsdlUrl>http://localhost:8080/t_marks_ws/MarkWS?WSDL</wsdlUrl>
-                            </wsdlUrls>
-                            <packageName></packageName>
-                            <vmArgs>
-                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-                            </vmArgs>
-                            
-                            <wsdlLocation>http://localhost:8080/t_marks_ws/MarkWS?WSDL</wsdlLocation>
-                       
-                            <staleFile>${project.build.directory}/jaxws/stale/MarkWS.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-MarkWS</id>
-                        <phase>generate-sources</phase>
-                    </execution>
+           
 
                 </executions>
-                
                 <dependencies>
                     <dependency>
                         <groupId>org.glassfish.metro</groupId>
@@ -293,13 +252,12 @@
                         <version>4.0.6</version>
                     </dependency>
                 </dependencies>
-                
                 <configuration>
                     <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
                     <xnocompile>true</xnocompile>
                     <verbose>true</verbose>
                     <extension>true</extension>
-                    <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
+                    <!--                    <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>-->
                 </configuration>
             </plugin>
         </plugins>

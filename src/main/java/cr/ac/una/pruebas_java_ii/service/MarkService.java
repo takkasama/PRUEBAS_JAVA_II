@@ -6,8 +6,8 @@ import java.util.logging.Logger;
 import cr.ac.una.pruebas_java_ii.model.MarkDTO;
 import cr.ac.una.pruebas_java_ii.model.TransportHelper;
 import cr.ac.una.pruebas_java_ii.util.Respuesta;
-import cr.ac.una.t_marks_ws.webservice.MarkWS_Service;
-import cr.ac.una.t_marks_ws.webservice.Wrapper;
+import cr.ac.una.t_marks.webservice.TMarksWS_Service;
+import cr.ac.una.t_marks.webservice.Wrapper;
 
 /**
  *
@@ -16,19 +16,39 @@ import cr.ac.una.t_marks_ws.webservice.Wrapper;
 public class MarkService {
     private static final Logger LOG = Logger.getLogger(EmployeeService.class.getName());
 
-    private MarkWS_Service markservice;
+    private TMarksWS_Service markservice;
 
 
-    public void initMarkService(){
+    public void initService(){
         if(markservice == null){
-            markservice = new MarkWS_Service();
+            markservice = new TMarksWS_Service();
         }
     }
+    
+    public Respuesta getMark(Long id){
+        initService();
+        
+        try{
+            Wrapper wrapper = markservice.getTMarksWSPort().getMark(id);
+            
+            if(!wrapper.isState())
+                return new Respuesta(false, wrapper.getMessage(), wrapper.getInternalMessage());
+            
+            return new Respuesta(true, "" , "" , "mark",
+            TransportHelper.transportMarkDTO(wrapper.getMark()));
+                
+        }catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Error consultando el servicio web", ex);
+            return new Respuesta(false, "No se pudo conecctar con el servidor", "getMark" + ex.getMessage());
+        }
+        
+    }
+    
     public Respuesta saveMark(MarkDTO markDTO){
         try{
-            initMarkService();
+            initService();
             
-            Wrapper wrapper = markservice.getMarkWSPort().saveMark(TransportHelper.transportMarkDTOWS(markDTO));
+            Wrapper wrapper = markservice.getTMarksWSPort().saveMark(TransportHelper.transportMarkDTOWS(markDTO));
             if(!wrapper.isState())
                 return new Respuesta(false, wrapper.getMessage(), wrapper.getInternalMessage());
             
@@ -45,12 +65,13 @@ public class MarkService {
     
     public Respuesta deleteMark(Long id){
         try{
-            initMarkService();
+            initService();
             
-            Wrapper wrapper = markservice.getMarkWSPort().deleteMark(id);
-                
-            return new Respuesta(wrapper.isState(), wrapper.getMessage(), wrapper.getInternalMessage());
+            Wrapper wrapper = markservice.getTMarksWSPort().deleteMark(id);
+             if(!wrapper.isState())   
+                return new Respuesta(false, wrapper.getMessage(), wrapper.getInternalMessage());
             
+             return new Respuesta(true, "", "");
         }catch (Exception ex) {
             LOG.log(Level.SEVERE, "Error consultando el servicio web", ex);
             return new Respuesta(false, "No se pudo conecctar con el servidor", "deleteMark" + ex.getMessage());

@@ -1,38 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXToggleButton?>
-<?import java.net.URL?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.pruebas_java_ii.controller.MarkCreatorController">
-   <stylesheets>
-      <URL value="@style.css" />
-   </stylesheets>
-   <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Tester Marcas" VBox.vgrow="ALWAYS" />
-            <HBox alignment="CENTER" prefHeight="111.0" prefWidth="600.0" spacing="40.0">
-               <children>
-                  <MFXButton fx:id="btnEntrance" onAction="#onActionBtnEntrance" text="Entrada" />
-                  <MFXButton fx:id="btnExit" onAction="#onActionBtnExit" text="Salida" />
-               </children>
-            </HBox>
-            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Marcas" VBox.vgrow="ALWAYS" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <MFXToggleButton fx:id="tglIncosistent" text="Es Incosistente" />
-                  <MFXToggleButton fx:id="tglShiftDay" text="Turno Diurno" />
-               </children>
-            </HBox>
-            <MFXButton fx:id="btnSave" onAction="#onActionBtnSave" prefHeight="30.0" prefWidth="128.0" text="Guardar" />
-            <ListView fx:id="tbMarks" prefHeight="153.0" prefWidth="610.0" VBox.vgrow="ALWAYS" />
-         </children>
-      </VBox>
-   </children>
+<AnchorPane prefHeight="517.0" prefWidth="673.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.pruebas_java_ii.controller.MarkCreatorController">
+
+
+<fx:define>
+    <ToggleGroup fx:id="shiftGroup" />
+</fx:define>
+
+<children>
+
+    <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="25.0">
+
+        <padding>
+            <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
+        </padding>
+
+        <!-- TITLE -->
+
+        <Label style="                    -fx-font-size: 26px;                    -fx-font-weight: bold;                    -fx-text-fill: #242424;                " text="Mark Test" />
+
+        <Label fx:id="lblemployeeInfo" style="                    -fx-font-size: 12px;                    -fx-text-fill: #777777;                " text="Registro rápido de entrada y salida" />
+
+        <Separator />
+
+        <!-- EMPLOYEE -->
+
+        <MFXTextField fx:id="txtEmployeeId" floatingText="Employee ID" maxWidth="Infinity" onKeyPressed="#onKeyPressedTxtIdEmployee" prefHeight="54.0" prefWidth="528.0" promptText="Enter employee ID" />
+
+        <!-- SHIFT -->
+
+        <Label style="                    -fx-font-size: 14px;                    -fx-font-weight: bold;                    -fx-text-fill: #444444;                " text="Turno" />
+
+        <HBox alignment="CENTER" spacing="10.0">
+
+            <ToggleButton fx:id="tglShiftDay" prefHeight="40.0" prefWidth="140.0" selected="true" text="Day">
+               <toggleGroup>
+                  <ToggleGroup fx:id="shiftGroup" />
+               </toggleGroup></ToggleButton>
+
+            <ToggleButton fx:id="tglShiftNight" prefHeight="40.0" prefWidth="140.0" text="Night" toggleGroup="$shiftGroup" />
+
+        </HBox>
+
+        <Separator />
+
+        <!-- MARK ACTIONS -->
+
+        <HBox alignment="CENTER" spacing="15.0">
+
+            <MFXButton fx:id="btnEntry" onAction="#onActionEntry" prefHeight="65.0" prefWidth="200.0" style="                            -fx-background-color: #2e7d32;                            -fx-text-fill: white;                            -fx-font-size: 16px;                            -fx-font-weight: bold;                            -fx-background-radius: 8px;                        " text="ENTRADA" />
+
+            <MFXButton fx:id="btnExit" onAction="#onActionExit" prefHeight="65.0" prefWidth="200.0" style="                            -fx-background-color: #c62828;                            -fx-text-fill: white;                            -fx-font-size: 16px;                            -fx-font-weight: bold;                            -fx-background-radius: 8px;                        " text="SALIDA" />
+
+        </HBox>
+
+        <!-- TEST STATUS -->
+
+        <Label fx:id="lblStatus" style="                    -fx-font-size: 12px;                    -fx-text-fill: #777777;                " text="Ready" wrapText="true" />
+
+    </VBox>
+
+</children>
+
+
 </AnchorPane>

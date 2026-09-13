@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.control.Label?>
+
+<?import javafx.scene.control.Separator?>
+
+<?import javafx.scene.control.TableColumn?>
+
+<?import javafx.scene.control.TableView?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.layout.Region?>
+
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="720.0"
+         prefWidth="1050.0"
+         style="-fx-background-color: #f4f4f4;"
+         xmlns="http://javafx.com/javafx/23.0.1"
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="cr.ac.una.pruebas_java_ii.controller.MarkController">
+
+
+<children>
+
+    <VBox spacing="18.0"
+          AnchorPane.topAnchor="20.0"
+          AnchorPane.bottomAnchor="20.0"
+          AnchorPane.leftAnchor="25.0"
+          AnchorPane.rightAnchor="25.0">
+
+        <padding>
+            <Insets top="10.0"
+                    right="10.0"
+                    bottom="10.0"
+                    left="10.0"/>
+        </padding>
+
+        <!-- ================================================== -->
+        <!-- HEADER -->
+        <!-- ================================================== -->
+
+        <VBox spacing="4.0">
+
+            <Label text="Marks Management"
+                   style="
+                       -fx-font-size: 26px;
+                       -fx-font-weight: bold;
+                       -fx-text-fill: #242424;
+                   "/>
+
+            <Label text="Consulta y exportación de marcas por empleado"
+                   style="
+                       -fx-font-size: 13px;
+                       -fx-text-fill: #777777;
+                   "/>
+
+        </VBox>
+
+        <Separator/>
+
+        <!-- ================================================== -->
+        <!-- EMPLOYEE SEARCH -->
+        <!-- ================================================== -->
+
+        <VBox spacing="15.0"
+              style="
+                  -fx-background-color: white;
+                  -fx-background-radius: 12px;
+                  -fx-border-radius: 12px;
+                  -fx-border-color: #dddddd;
+                  -fx-border-width: 1px;
+              ">
+
+            <padding>
+                <Insets top="18.0"
+                        right="20.0"
+                        bottom="18.0"
+                        left="20.0"/>
+            </padding>
+
+            <Label text="Employee Search"
+                   style="
+                       -fx-font-size: 18px;
+                       -fx-font-weight: bold;
+                       -fx-text-fill: #333333;
+                   "/>
+
+            <HBox alignment="CENTER_LEFT"
+                  spacing="12.0">
+
+                <MFXTextField fx:id="txtEmployeeId"
+                              floatingText="Employee ID"
+                              promptText="Enter employee ID"
+                              prefWidth="280.0"
+                              prefHeight="45.0"/>
+
+                <MFXButton fx:id="btnSearchEmployee"
+                           text="Search"
+                           onAction="#onActionSearchEmployee"
+                           prefWidth="120.0"
+                           prefHeight="42.0"
+                           style="
+                               -fx-background-color: #1565c0;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 7px;
+                           "/>
+
+                <MFXButton fx:id="btnClearSearch"
+                           text="Clear"
+                           onAction="#onActionClearSearch"
+                           prefWidth="100.0"
+                           prefHeight="42.0"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <MFXButton fx:id="btnRefreshMarks"
+                           text="Refresh"
+                           onAction="#onActionRefreshMarks"
+                           prefWidth="110.0"
+                           prefHeight="42.0"/>
+
+            </HBox>
+
+        </VBox>
+
+        <!-- ================================================== -->
+        <!-- EMPLOYEE INFO -->
+        <!-- ================================================== -->
+
+        <HBox spacing="20.0"
+              style="
+                  -fx-background-color: #ffffff;
+                  -fx-background-radius: 12px;
+                  -fx-border-radius: 12px;
+                  -fx-border-color: #dddddd;
+                  -fx-border-width: 1px;
+              ">
+
+            <padding>
+                <Insets top="18.0"
+                        right="20.0"
+                        bottom="18.0"
+                        left="20.0"/>
+            </padding>
+
+            <VBox spacing="5.0">
+
+                <Label text="Employee"
+                       style="
+                           -fx-font-size: 12px;
+                           -fx-font-weight: bold;
+                           -fx-text-fill: #777777;
+                       "/>
+
+                <Label fx:id="lblEmployeeName"
+                       text="No employee loaded"
+                       style="
+                           -fx-font-size: 18px;
+                           -fx-font-weight: bold;
+                           -fx-text-fill: #333333;
+                       "/>
+
+            </VBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <VBox spacing="5.0">
+
+                <Label text="Employee ID"
+                       style="
+                           -fx-font-size: 12px;
+                           -fx-font-weight: bold;
+                           -fx-text-fill: #777777;
+                       "/>
+
+                <Label fx:id="lblEmployeeId"
+                       text="-"
+                       style="
+                           -fx-font-size: 16px;
+                           -fx-text-fill: #333333;
+                       "/>
+
+            </VBox>
+
+            <Region prefWidth="30.0"/>
+
+            <VBox spacing="5.0">
+
+                <Label text="Status"
+                       style="
+                           -fx-font-size: 12px;
+                           -fx-font-weight: bold;
+                           -fx-text-fill: #777777;
+                       "/>
+
+                <Label fx:id="lblEmployeeStatus"
+                       text="Waiting for search"
+                       style="
+                           -fx-font-size: 14px;
+                           -fx-text-fill: #1565c0;
+                       "/>
+
+            </VBox>
+
+        </HBox>
+
+        <!-- ================================================== -->
+        <!-- MARKS TABLE -->
+        <!-- ================================================== -->
+
+        <VBox spacing="15.0"
+              VBox.vgrow="ALWAYS"
+              style="
+                  -fx-background-color: white;
+                  -fx-background-radius: 12px;
+                  -fx-border-radius: 12px;
+                  -fx-border-color: #dddddd;
+                  -fx-border-width: 1px;
+              ">
+
+            <padding>
+                <Insets top="20.0"
+                        right="20.0"
+                        bottom="20.0"
+                        left="20.0"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT">
+
+                <VBox spacing="3.0">
+
+                    <Label text="Employee Marks"
+                           style="
+                               -fx-font-size: 20px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #333333;
+                           "/>
+
+                    <Label text="Entradas, salidas, turno y consistencia"
+                           style="
+                               -fx-font-size: 12px;
+                               -fx-text-fill: #888888;
+                           "/>
+
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Label text="Total:"
+                       style="
+                           -fx-font-weight: bold;
+                           -fx-text-fill: #555555;
+                       "/>
+
+                <Label fx:id="lblTotalMarks"
+                       text="0"
+                       style="
+                           -fx-font-weight: bold;
+                           -fx-text-fill: #1565c0;
+                       "/>
+
+            </HBox>
+
+            <Separator/>
+
+            <TableView fx:id="tbMarks"
+                       VBox.vgrow="ALWAYS"
+                       prefHeight="320.0">
+
+                <columns>
+
+                    <TableColumn fx:id="colId"
+                                 text="ID"
+                                 prefWidth="90.0"/>
+
+                    <TableColumn fx:id="colEntry"
+                                 text="Entrada"
+                                 prefWidth="190.0"/>
+
+                    <TableColumn fx:id="colExit"
+                                 text="Salida"
+                                 prefWidth="190.0"/>
+
+                    <TableColumn fx:id="colShift"
+                                 text="Turno"
+                                 prefWidth="160.0"/>
+
+                    <TableColumn fx:id="colInconsistent"
+                                 text="Es inconsistente"
+                                 prefWidth="180.0"/>
+
+                </columns>
+
+            </TableView>
+
+            <!-- ================================================== -->
+            <!-- TABLE FOOTER -->
+            <!-- ================================================== -->
+
+            <HBox alignment="CENTER_LEFT"
+                  spacing="10.0">
+
+                <Label text="Inconsistent Marks:"
+                       style="
+                           -fx-font-weight: bold;
+                           -fx-text-fill: #555555;
+                       "/>
+
+                <Label fx:id="lblTotalInconsistent"
+                       text="0"
+                       style="
+                           -fx-font-weight: bold;
+                           -fx-text-fill: #c62828;
+                       "/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Label fx:id="lblStatus"
+                       text="Enter an employee ID to load marks."
+                       style="
+                           -fx-font-size: 12px;
+                           -fx-text-fill: #777777;
+                       "/>
+
+            </HBox>
+
+            <Separator/>
+
+            <!-- ================================================== -->
+            <!-- REPORT EXPORT -->
+            <!-- ================================================== -->
+
+            <HBox alignment="CENTER_LEFT"
+                  spacing="12.0">
+
+                <VBox spacing="3.0">
+
+                    <Label text="Export Report"
+                           style="
+                               -fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #333333;
+                           "/>
+
+                    <Label text="Exportar las marcas del empleado seleccionado"
+                           style="
+                               -fx-font-size: 11px;
+                               -fx-text-fill: #888888;
+                           "/>
+
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <MFXButton fx:id="btnExportJRPrint"
+                           text="JRPrint"
+                           onAction="#onActionExportJRPrint"
+                           prefWidth="115.0"
+                           prefHeight="42.0"
+                           style="
+                               -fx-background-color: #455a64;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 7px;
+                           "/>
+
+                <MFXButton fx:id="btnExportPDF"
+                           text="PDF"
+                           onAction="#onActionExportPDF"
+                           prefWidth="115.0"
+                           prefHeight="42.0"
+                           style="
+                               -fx-background-color: #c62828;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 7px;
+                           "/>
+
+                <MFXButton fx:id="btnExportExcel"
+                           text="Excel"
+                           onAction="#onActionExportExcel"
+                           prefWidth="115.0"
+                           prefHeight="42.0"
+                           style="
+                               -fx-background-color: #2e7d32;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 7px;
+                           "/>
+
+            </HBox>
+
+        </VBox>
+
+    </VBox>
+
+</children>
+
+
+</AnchorPane>

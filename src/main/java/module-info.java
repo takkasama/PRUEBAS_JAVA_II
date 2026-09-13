@@ -19,10 +19,10 @@ module cr.ac.una.pruebas_java_ii {
     requires jakarta.persistence;
 
     exports cr.ac.una.pruebas_java_ii;
-    exports cr.ac.una.t_marks_ws.webservice to com.sun.xml.ws;
+    exports cr.ac.una.t_marks.webservice to com.sun.xml.ws;
     
     opens cr.ac.una.pruebas_java_ii.controller to javafx.fxml;
     opens cr.ac.una.pruebas_java_ii to javafx.fxml;
     opens cr.ac.una.pruebas_java_ii.model to  net.sf.jasperreports.core;
-    opens cr.ac.una.t_marks_ws.webservice to com.sun.xml.bind;    
+    opens cr.ac.una.t_marks.webservice to com.sun.xml.bind;    
 }

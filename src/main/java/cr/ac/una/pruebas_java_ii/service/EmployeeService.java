@@ -1,12 +1,14 @@
-package cr.ac.una. pruebas_java_ii.service;
+package cr.ac.una.pruebas_java_ii.service;
+
+import cr.ac.una.pruebas_java_ii.model.EmployeeDTO;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import cr.ac.una.pruebas_java_ii.model.TransportHelper;
 import cr.ac.una.pruebas_java_ii.util.Respuesta;
-import cr.ac.una.t_marks_ws.webservice.EmployeeWS_Service;
-import cr.ac.una.t_marks_ws.webservice.Wrapper;
+import cr.ac.una.t_marks.webservice.TMarksWS_Service;
+import cr.ac.una.t_marks.webservice.Wrapper;
 
 
 /**
@@ -17,19 +19,19 @@ public class EmployeeService {
 
     private static final Logger LOG = Logger.getLogger(EmployeeService.class.getName());
 
-    private EmployeeWS_Service employeeService;
+    private TMarksWS_Service employeeService;
 
-    public void initEmployeeService() {
+    public void initService() {
         if (employeeService == null) {
-            employeeService = new EmployeeWS_Service();
+            employeeService = new TMarksWS_Service();
         }
     }
 
     public Respuesta getAdmin(Long folio, String password) {
         try {
-            initEmployeeService();
+            initService();
             
-            Wrapper wrapper = employeeService.getEmployeeWSPort().getAdmin(folio, password);
+            Wrapper wrapper = employeeService.getTMarksWSPort().getAdmin(folio, password);
 
             if (!wrapper.isState()) {
                 return new Respuesta(false, wrapper.getMessage(), wrapper.getInternalMessage());
@@ -46,8 +48,8 @@ public class EmployeeService {
     
     public Respuesta getEmployee(Long id){
         try{
-            initEmployeeService();
-            Wrapper wrapper = employeeService.getEmployeeWSPort().getEmployee(id);
+            initService();
+            Wrapper wrapper = employeeService.getTMarksWSPort().getEmployee(id);
             
             if(!wrapper.isState())
                 return new Respuesta(false, wrapper.getMessage(), wrapper.getInternalMessage());
@@ -63,4 +65,43 @@ public class EmployeeService {
         
     }
 
+    
+    public Respuesta saveEmployee(EmployeeDTO employeeDTO){
+        initService();
+        try{
+           Wrapper wrapper = employeeService.getTMarksWSPort().
+                   saveEmployee(TransportHelper.transportEmployeeDTOWS(employeeDTO));
+            
+            if(wrapper.isState())
+                return new Respuesta(false, wrapper.getMessage(), wrapper.getInternalMessage());
+            
+            return new Respuesta(true, "" ,"","employee",
+            TransportHelper.transportEmployeeDTO(wrapper.getEmploye()));
+            
+        }catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Error consultando el servicio web", ex);
+            return new Respuesta(false, "No se pudo conecctar con el servidor", "saveEmployee" + ex.getMessage());
+        }
+
+        
+    }
+    
+    
+    public Respuesta deleteEmployee(Long id){
+        initService();
+        
+        try{
+            Wrapper wrapper = employeeService.getTMarksWSPort().deleteEmployee(id);
+            
+            if(!wrapper.isState())
+                return new Respuesta(false, wrapper.getMessage(), wrapper.getInternalMessage());
+            
+            return new Respuesta(true, "", "");
+            
+        }catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Error consultando el servicio web", ex);
+            return new Respuesta(false, "No se pudo conecctar con el servidor", "deleteEmployee" + ex.getMessage());
+        }
+        
+    }
 }
